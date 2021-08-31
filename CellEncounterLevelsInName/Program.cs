@@ -8,6 +8,7 @@ using Noggog;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 
 namespace CellEncounterLevelsInName
 {
@@ -172,6 +173,7 @@ namespace CellEncounterLevelsInName
 
                     string i18nMapMarkerName = "";
                     placedObject.MapMarker.Name.TryLookup(Language.French, out i18nMapMarkerName);
+                    i18nMapMarkerName = Encoding.GetEncoding("ISO-8859-1").GetString(Encoding.UTF8.GetBytes(i18nMapMarkerName));
                     mapMarkerName = i18nMapMarkerName ?? mapMarkerName;
                     
                     sbyte minLevel = 127;
