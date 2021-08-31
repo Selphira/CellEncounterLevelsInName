@@ -170,6 +170,10 @@ namespace CellEncounterLevelsInName
                     if (mapMarkerName is null) continue;
                     if (!markerContexts.Value.TryGetValue(placedObject.FormKey, out var matchingContext)) continue;
 
+                    string i18nMapMarkerName = "";
+                    placedObject.MapMarker.Name.TryLookup(Language.French, out i18nMapMarkerName);
+                    mapMarkerName = i18nMapMarkerName ?? mapMarkerName;
+                    
                     sbyte minLevel = 127;
                     sbyte maxLevel = -128;
                     foreach (var encounterZone in encounterZoneSet)
