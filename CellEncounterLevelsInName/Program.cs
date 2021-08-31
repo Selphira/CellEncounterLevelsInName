@@ -116,6 +116,10 @@ namespace CellEncounterLevelsInName
                 if (encounterZone is null) continue;
 
                 string cellName = cell.Name.String;
+                string i18nCellName = "";
+                cell.Name.TryLookup(Language.French, out i18nCellName);
+                cellName = i18nCellName ?? cellName;
+                
                 sbyte minLevel = encounterZone.MinLevel;
                 sbyte maxLevel = encounterZone.MaxLevel;
 
